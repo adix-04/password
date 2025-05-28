@@ -1,31 +1,78 @@
 #!/usr/bin/env python
-
 # The goal is to create a custom tailored wordlist or password list for cracking password
 # In order for this to work you should have some data about the target 
-# based on that give some key words, number combinations,symbols,names,places the program does the rest
+# based on that,  give key words, number combinations,symbols,names,places to the program and it does the rest
 # i dont know what are the chances of this code guessing the password , but i know that its not zero if you can give some valueble data
 # The better data == better chances of prediction
 
-
 import random
 import itertools
+import os
 
 __author__ = "Adix(Adin NS<adinnavakumar22@gmail.com>)"
 __license__ = "GPL"
 __version__ = "1.1.0"
 
+message = """\033[33m
+        █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+        █              𝗠𝗘𝗡𝗨
+        █=============================================
+        █ 1.  create random list from words                                     
+        █ 2.  create random number combinations                                    
+        █ 3.  use common password list
+        █ 4.  download password list from intenet
+        █ 5.  exit
+        █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+\033[0m
+"""
+banner = """\033[32m
+  _      ______         __  __  ____             
+ | | /| / / __ \_______/ / /  |/  (_)_ _____ ____
+ | |/ |/ / /_/ / __/ _  / / /|_/ / /\ \ / -_) __/
+ |__/|__/\____/_/  \_,_/ /_/  /_/_//_\_\\__/_/     
+"""
+developer = "Developed by adix(Adin N S)           Word Mixer v1.0."
 
-def main():
-    print("=== Custom Wordlist Generator ===")
-    raw_input = input("Enter high-probability words number combinations eg:(name,2001,hello,mycar)(comma-separated):\n> ")
+def intro():
+    os.system("clear")
+    print(banner)
+    print(developer)
+    print(message)
+def option1():
+    raw_input = input("\033[1m\033[33;32m[+] Enter high-probability words/number combinations(comma-separated):>\033[0m ")
     base_words = [w.strip() for w in raw_input.split(',') if w.strip()]
     wordlist = generate_passwords(base_words)
-    
+
     with open("passwords.txt", "w") as f:
         for word in wordlist:
             f.write(word + "\n")
     
-    print(f"\nGenerated {len(wordlist)} passwords and saved to passwords.txt")
+    print(f"\033[94m \nGenerated {len(wordlist)} passwords and saved to passwords.txt")
+def option2():
+    raw_input = input("\033[1m\033[33;32m[+] Enter high-probability number combinations only(comma-separated):>\033[0m ")
+    base_words = [w.strip() for w in raw_input.split(',') if w.strip()]
+    wordlist = generate_passwords(base_words)
+
+    with open("passwords.txt", "w") as f:
+        for word in wordlist:
+            f.write(word + "\n")
+    
+    print(f"\033[94m \nGenerated {len(wordlist)} passwords and saved to passwords.txt")
+
+def main():
+    intro()
+    choice = int(input("\033[1m\033[33;32m[+] Select an option number from the above menu >\033[0m "))
+    if choice == 1:
+        option1()
+    elif choice == 2:
+        option2()
+    elif choice == 5:
+        print(" ")
+        print("\033[93mOk bye...")
+        print("\033[93mThank you for using...")
+        print(" ")
+        os.system("exit")
+ 
  
 def generate_passwords(base_words,max_count =1000000):
     result = set()
@@ -84,9 +131,10 @@ def leetspeak(word):
 def add_combos(word):
     combos = []
     numbers = ['1','2','3','4','5','6','7','8','9','0']
-    symbols = ['', '!', '@', '#', '$','&','%','.']
+    symbols = ['', '!', '@', '#', '$','&','%','.','-']
     for n in numbers:
         for s in symbols:
+            combos.append(f"{word}{n}{n}{n}")
             combos.append(f"{word}{s}{n}{random.choice(numbers)}")
             combos.append(f"{n}{s}{word}")
             combos.append(f"{word}{n}{random.choice(numbers)}{random.choice(numbers)}")          
