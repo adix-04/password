@@ -31,6 +31,10 @@ jobs:
         needs: config
         runs-on: ubuntu-latest
         steps:
+            - name: check directory
+              run: |
+                  pwd
+                  ls -R
             - name: compile code
               run: python3 src/generator.py
 
