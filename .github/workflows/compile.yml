@@ -36,10 +36,10 @@ jobs:
                   pwd
                   ls -R
                   ls -la
-                  ls -la src
             - name: compile code
               run: |
                    cd src
+                   pwd
                    python3 generator.py
 
               
