@@ -31,12 +31,12 @@ banner = """\033[32m
  | |/ |/ / /_/ / __/ _  / / /|_/ / /\ \ / -_) __/
  |__/|__/\____/_/  \_,_/ /_/  /_/_//_\_\\__/_/     
 """
-developer = "Developed by adix(Adin N S)           Word Mixer v1.0."
+dev = "Developed by adix(Adin N S)           Word Mixer v1.0."
 
 def intro():
     os.system("clear")
     print(banner)
-    print(developer)
+    print(dev)
     print(message)
 def option1():
     raw_input = input("\033[1m\033[33;32m[+] Enter high-probability words/number combinations(comma-separated):>\033[0m ")
@@ -58,22 +58,12 @@ def option2():
             f.write(word + "\n")
     
     print(f"\033[94m \nGenerated {len(wordlist)} passwords and saved to passwords.txt")
+def option3():
+    print("option 3")
+def option4():
+    print('option4')
 
-def main():
-    intro()
-    choice = int(input("\033[1m\033[33;32m[+] Select an option number from the above menu >\033[0m "))
-    if choice == 1:
-        option1()
-    elif choice == 2:
-        option2()
-    elif choice == 5:
-        print(" ")
-        print("\033[93mOk bye...")
-        print("\033[93mThank you for using...")
-        print(" ")
-        os.system("exit")
- 
- 
+  
 def generate_passwords(base_words,max_count =1000000):
     result = set()
     result.update(combine_words(base_words))     
@@ -142,6 +132,26 @@ def add_combos(word):
             combos.append(f"{word}{random.choice(symbols)}{random.choice(numbers)}{random.choice(numbers)}")
             combos.append(f"{word}{s}{n}{numbers[int(n)-2]}{numbers[int(n)-3]}")
     return combos
+def main():
+        while True: 
+            intro()
+            choice = int(input("\033[1m\033[33;32m[+] Select an option number from the above menu >\033[0m "))
+            if choice == 1:
+                option1()
+            elif choice == 2:
+                option2()
+            elif choice ==3:
+                option3()
+            elif choice == 4:
+                option4()
+            elif choice == 5:
+                print(" ")
+                print("\033[93mOk bye...")
+                print("\033[93mThank you for using...")
+                print(" ")
+                os.system("exit")
+                break
+            
 
 if __name__ == "__main__":
-    main()
+        main()
