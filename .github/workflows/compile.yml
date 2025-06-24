@@ -39,7 +39,10 @@ jobs:
             - name: compile code
               run: |
                    pwd
-                   python3 generator.py
+                   cd ..
+                   pwd
+
+                   python3 src/generator.py
 
               
     
