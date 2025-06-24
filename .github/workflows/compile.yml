@@ -35,6 +35,8 @@ jobs:
               run: |
                   pwd
                   ls -R
+                  ls -la
+                  ls -la src
             - name: compile code
               run: python3 src/generator.py
 
