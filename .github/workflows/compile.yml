@@ -41,7 +41,9 @@ jobs:
                    pwd
                    cd ..
                    pwd
-
+                   ls -R
+                   cd /password/src
+                   
                    python3 src/generator.py
 
               
