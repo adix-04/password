@@ -38,7 +38,9 @@ jobs:
                   ls -la
                   ls -la src
             - name: compile code
-              run: python3 src/generator.py
+              run: |
+                   cd src
+                   python3 generator.py
 
               
     
