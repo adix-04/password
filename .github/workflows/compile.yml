@@ -35,6 +35,7 @@ jobs:
               run: |
                   pwd
                   cd 
+                  ls -R
                   pwd
                   python3 src/generator.py
                   ls -R
