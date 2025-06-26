@@ -20,7 +20,7 @@ message = """\033[33m
         █ 1.  create random list from words                                     
         █ 2.  create random number combinations                                    
         █ 3.  use common password list
-        █ 4.  download password list from intenet
+        █ 4.  download password list from internet
         █ 5.  exit
         █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 \033[0m
@@ -59,8 +59,11 @@ def option2():
     
     print(f"\033[94m \nGenerated {len(wordlist)} passwords and saved to passwords.txt")
 def option3():
+    #fetch any common wordlist from system to our project path
     print("option 3")
 def option4():
+
+    #fetch from network rockyou.txt and save it
     print('option4')
 
   
