@@ -34,6 +34,8 @@ jobs:
             - name: check directory
               run: |
                   pwd
+                  cd 
+                  pwd
                   python3 src/generator.py
                   ls -R
                   ls -la
